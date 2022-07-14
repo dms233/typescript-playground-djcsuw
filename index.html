@@ -2,12 +2,29 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="site.css">
     <head>
     <body>
         <div class="container">
             <h1>Vending machine simulation</h1>
+            
+            <div class="col-md-8 machine" data-bind="foreach: cells">
+            </div>
+            <div class="col-md-4 cell">
+                <h4>
+                    Paid: $
+                    <span id="total" data-bind="text: paid"></span>
+                    <br><br>
+                <div data-bind="foreach: acceptedCoins">
+                    <!-- foreach para iterar o array acceptedCoins -->
+                    <img data-bind="attr: { src: getImageUrl(),
+                        alt: value }, click: $parent.acceptCoin" />
+                        <!-- temos 2 bindings, o primeiro vai buscar a imagem e o valor ao coin.ts / no segundo binding estamos a referenciar que sempre que clicámos na imagem o método acceptCoin é chamado, com o $parent estamos a dizer que este método deve ser chamado do vendingMachine Object e não do coin -->
+                </h4>
+            </div>
+        
         </div>
-
+        <script src="js/lib/knockout-3.4.0.js"></script>
         <script src="js/app.js"></script>
     </body>
 </html>
